@@ -1,9 +1,10 @@
 //1. Imports: Zona de importaciones
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import React,{useState} from 'react';
 
 //2.Main: Zona de componentes 
- {
+export default function ContadorScreen() {
   const[contador,setContador]=useState(0);
 
   return (
