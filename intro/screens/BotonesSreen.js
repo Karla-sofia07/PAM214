@@ -42,8 +42,7 @@ export default function BotonesScreen() {
       </Pressable>
       <TouchableOpacity
         activeOpacity={0 , 2}
-        onPress={() => setAccion('Opacity')}
-        value={IsDisabled}
+        onPress={() => setAccion('Opacity')}        value={IsDisabled}
       >
         <View style={[styles.card, styles.shadow]}>
           <View style={styles.mockImage}/>
