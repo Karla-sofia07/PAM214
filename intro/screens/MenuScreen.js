@@ -9,6 +9,7 @@ import ActivityIndicator from './ActivityIndicator';
 import FlatListySectionList from './FlatListySectionList';
 import Modal from './Modal';
 import BottomSheet from './BottomSheet';
+import Ejemp from './Ejemp'; 
 export default function MenuScreen () {
     const [screen,setScreen]=useState('menu');
     switch (screen){
@@ -29,8 +30,8 @@ export default function MenuScreen () {
                             <Button onPress={()=>setScreen('ActivityIndicator')} title='Pract:ActivityIndicator'/>
                             <Button onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
                             <Button onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
-                            <Button onPress={()=>setScreen('Bottom Sheet')} title='Pract:Bottom Sheet'/>
-                            
+                            <Button onPress={()=>setScreen('Bottom Sheet')} title='Pract:Bottom Sheet'/> 
+                            <Button onPress={()=>setScreen('Ejemp')} title='Pract:Ejemp'/> 
                     </View> 
                 )
         case 'Imagen':
@@ -46,10 +47,9 @@ export default function MenuScreen () {
         case  'Modal':
             return <Modal/>
         case 'Bottom Sheet':
-            return <BottomSheet/>
-        
-        
-         
+            return <BottomSheet/>  
+        case 'Ejemp':
+            return <Ejemp/>
     }
     
     
