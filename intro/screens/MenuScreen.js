@@ -32,6 +32,7 @@ export default function MenuScreen () {
                             <Button onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
                             <Button onPress={()=>setScreen('Bottom Sheet')} title='Pract:Bottom Sheet'/> 
                             <Button onPress={()=>setScreen('Ejemp')} title='Pract:Ejemp'/> 
+                            <Button onPress={()=>setScreen('Repaso 1')} title='Repaso 1'/> 
                     </View> 
                 )
         case 'Imagen':
@@ -50,6 +51,8 @@ export default function MenuScreen () {
             return <BottomSheet/>  
         case 'Ejemp':
             return <Ejemp/>
+        case 'Repaso':
+            return <Repaso/>
     }
     
     
