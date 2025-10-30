@@ -2,7 +2,6 @@ import {Text, StyleSheet, View, Button} from 'react-native'
 import React, { useState } from 'react'
 import ContadorScreen from './ContadorScreen'
 import BotonesScreen from './BotonesSreen'
-import ImageBackground from './ImageBackground';
 import TextInput from './TextImput';
 import scrollView from './scrollView';
 import ActivityIndicator from './ActivityIndicator';
@@ -10,6 +9,7 @@ import FlatListySectionList from './FlatListySectionList';
 import Modal from './Modal';
 import BottomSheet from './BottomSheet';
 import Ejemp from './Ejemp'; 
+import ImageBackgroundScreen from './ImageBackgroundScreen';
 export default function MenuScreen () {
     const [screen,setScreen]=useState('menu');
     switch (screen){
@@ -21,23 +21,47 @@ export default function MenuScreen () {
             default:
                 return (
                    <View style={styles.container}>
-                            <Text style={styles.texto}>Menu Practicas</Text>
-                            <Button onPress={()=>setScreen('contador')} title='Pract:Contador'/>
-                            <Button onPress={()=>setScreen('botones')} title='Pract:Buttons'/> 
-                            <Button onPress={()=>setScreen('Imagen')} title='Pract:ImageBackground'/>
-                            <Button onPress={()=>setScreen('Texto')} title='Pract:TextInput'/> 
-                            <Button onPress={()=>setScreen('Scroll')} title='Pract:Scroll'/>
-                            <Button onPress={()=>setScreen('ActivityIndicator')} title='Pract:ActivityIndicator'/>
-                            <Button onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
-                            <Button onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
-                            <Button onPress={()=>setScreen('Bottom Sheet')} title='Pract:Bottom Sheet'/> 
-                            <Button onPress={()=>setScreen('Ejemp')} title='Pract:Ejemp'/> 
+                            <Text style={styles.texto}>Menú Prácticas</Text>
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('contador') } title='Pract:Contador'/> 
+                            </View>
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff'onPress={()=>setScreen('botones')} title='Pract:Buttons'/> 
+                            </View>
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Texto')} title='Pract:TextInput'/>
+                            </View> 
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Imagen')} title='Pract:ImageBackground'/>
+                            </View> 
+                             <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Scroll')} title='Pract:Scroll'/>
+                            </View> 
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('ActivityIndicator')} title='Pract:ActivityIndicator'/>
+                            </View> 
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
+                            </View> 
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
+                            </View> 
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
+                            </View> 
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Bottom Sheet')} title='Pract:Bottom Sheet'/>
+                            </View> 
+                             <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Ejemp')} title='Pract:Ejemp'/> 
+                            </View>
+                            
                     </View> 
-                )
-        case 'Imagen':
-            return <ImageBackground/>   
+                )  
         case 'Texto':
             return <TextInput/>
+         case 'Imagen':
+            return <ImageBackgroundScreen/> 
         case 'Scroll':
             return <scrollView/>   
         case 'ActivityIndicator':
@@ -58,24 +82,30 @@ export default function MenuScreen () {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#addeffff',
-    alignItems: 'center',
+    backgroundColor: '#ff9cbdff',
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  texto:{
-    color:'#2b00ffff',
-    fontSize:30,
-    fontFamily:'Times New Roman',// tipografía
-    fontWeight: 'bold', // 
-    fontStyle: 'italic',// 
-    
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#d87daaff',
+    marginBottom: 25,
   },
-  contenedorBotones:{
-    marginTop: 15,// margen para poner botones alineados
-    flexDirection: 'row-reverse', // para acomodar en columna o en fila
-    gap: 30, // separación entre botones 
-
-
+  buttonContainer: {
+    alignItems: 'center',
+  },
+  buttonSquare: {
+    width: 180,
+    height: 45,
+    marginVertical: 6,
+    borderRadius: 0, // botones cuadrados
+    overflow: 'hidden',
+  },
+    texto:{
+    color:'#000000ff',
+    fontSize:50,
+    fontFamily:'Montserrat',// tipografía
   },
 });
 

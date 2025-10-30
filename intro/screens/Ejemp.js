@@ -14,11 +14,11 @@ export default function Ejemplo() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSplash(false); // cambia el estado para ocultar el splash
-    }, 3000);
+    }, 1000);
     return () => clearTimeout(timer); // limpia el temporizador al desmontar el componente
   }, []);
 
-  // Si "showSplash" es verdadero, se muestra esta vista (pantalla de bienvenida)
+  // Si "showSplash" es verdadero, se muestra esta vista (pantalla de bienvenida) 
   if (showSplash) {
     return (
       <View style={styles.splashContainer}>
@@ -42,10 +42,8 @@ export default function Ejemplo() {
         {/* View que contiene el texto y el botón, con un fondo semitransparente */}
         <View style={styles.overlay}>
           {/* Texto principal */}
-          <Text style={styles.title}>Explora nuestros cursos</Text>
+          <Text style={styles.title}>Bienvenido!</Text>
 
-          {/* Botón que muestra una alerta al presionarlo */}
-          <Button title="Comenzar" onPress={() => alert('¡Bienvenido!')} />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -58,7 +56,7 @@ const styles = StyleSheet.create({
   // Estilo del contenedor del splash (pantalla de bienvenida)
   splashContainer: {
     flex: 1, // ocupa toda la pantalla
-    backgroundColor: '#4682B4', // color azul de fondo
+    backgroundColor: '#000000ff', // color azul de fondo
     justifyContent: 'center', // centra el contenido verticalmente
     alignItems: 'center', // centra el contenido horizontalmente
   },
