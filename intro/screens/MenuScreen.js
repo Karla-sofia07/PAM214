@@ -2,14 +2,11 @@ import {Text, StyleSheet, View, Button} from 'react-native'
 import React, { useState } from 'react'
 import ContadorScreen from './ContadorScreen'
 import BotonesScreen from './BotonesSreen'
-import TextInput from './TextImput';
-import FlatListySectionList from './FlatListySectionList';
-import Modal from './Modal';
-import BottomSheet from './BottomSheet';
-import Ejemp from './Ejemp'; 
-import ImageBackgroundScreen from './ImageBackgroundScreen';
-import ActivityIndicatorScreen from './ActivityIndicatorScreen'; 
-import Scroll from './Scroll'; 
+import TextImput from './TextImput'
+import ImageBackgroundScreen from './ImageBackgroundScreen'
+import ActivityIndicatorScreen from './ActivityIndicatorScreen'
+import Scroll from './Scroll' 
+import Ejemp from './Ejemp'
 export default function MenuScreen () {
     const [screen,setScreen]=useState('menu');
     switch (screen){
@@ -35,10 +32,9 @@ export default function MenuScreen () {
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Imagen')} title='Pract:ImageBackground'/>
                             </View> 
                             <View style={styles.buttonSquare}>
-                                <Button color='#ff0080ff' onPress={()=>setScreen('Scroll')} title='Pract:Scroll'/>
-                            </View> 
-                            <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('ActivityIndicatorScreen')} title='Pract:ActivityIndicator'/>
+                             <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Scroll')} title='Pract:Scroll'/>
                             </View> 
                             <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
@@ -46,6 +42,7 @@ export default function MenuScreen () {
                             <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
                             </View>  
+                            </View> 
                             <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Bottom Sheet')} title='Pract:Bottom Sheet'/>
                             </View> 
@@ -63,6 +60,8 @@ export default function MenuScreen () {
             return <Scroll/>
         case 'ActivityIndicatorScreen':
             return <ActivityIndicatorScreen/>
+        case 'ActivityIndicator':
+            return <ActivityIndicator/>
         case  'FlatList':
             return <FlatListySectionList/>
         case  'Modal':
@@ -82,25 +81,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#d87daaff',
-    marginBottom: 25,
-  },
   buttonContainer: {
     alignItems: 'center',
+    marginTop: 20,
   },
   buttonSquare: {
     width: 180,
     height: 45,
     marginVertical: 6,
-    borderRadius: 0, // botones cuadrados
+    borderRadius: 0,
     overflow: 'hidden',
   },
-    texto:{
-    color:'#000000ff',
-    fontSize:50,
-    fontFamily:'Montserrat',// tipografía
+  texto: {
+    color: '#000000ff',
+    fontSize: 50,
+    fontFamily: 'Montserrat',
   },
 });
