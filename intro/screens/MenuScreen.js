@@ -1,5 +1,5 @@
 import {Text, StyleSheet, View, Button} from 'react-native'
-import React, { useState } from 'react'
+import React, { cacheSignal, useState } from 'react'
 import ContadorScreen from './ContadorScreen'
 import BotonesScreen from './BotonesSreen'
 import TextImput from './TextImput'
@@ -68,7 +68,8 @@ export default function MenuScreen () {
             return <Modal/>
         case 'Bottom Sheet':
             return <BottomSheet/>  
-
+        case 'Ejemp':
+            return <Ejemp/>
     }
     
     
