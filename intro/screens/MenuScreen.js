@@ -7,6 +7,7 @@ import ImageBackgroundScreen from './ImageBackgroundScreen'
 import ActivityIndicatorScreen from './ActivityIndicatorScreen'
 import Scroll from './Scroll' 
 import Ejemp from './Ejemp'
+import Repaso from './Repaso'
 export default function MenuScreen () {
     const [screen,setScreen]=useState('menu');
     switch (screen){
@@ -15,7 +16,7 @@ export default function MenuScreen () {
         case 'botones':
             return <BotonesScreen/>
         case 'menu':
-            default:
+            default: 
                 return (
                    <View style={styles.container}>
                             <Text style={styles.texto}>Menú Prácticas</Text>
@@ -49,11 +50,13 @@ export default function MenuScreen () {
                              <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Ejemp')} title='Pract:Ejemp'/> 
                             </View>
-                            
+                            <View style={styles.buttonSquare}>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('Repaso')} title='Pract:Repaso'/> 
+                            </View>
                     </View> 
                 )  
         case 'Texto':
-            return <TextInput/>
+            return <TextImput/>
          case 'Imagen':
             return <ImageBackgroundScreen/>  
           case 'Scroll' :
@@ -70,9 +73,9 @@ export default function MenuScreen () {
             return <BottomSheet/>  
         case 'Ejemp':
             return <Ejemp/>
-    }
-    
-    
+        case 'Repaso':
+            return <Repaso/>
+    }    
 }
 // 3. Estilos: Zona estetica y posicionamiento 
 const styles = StyleSheet.create({
