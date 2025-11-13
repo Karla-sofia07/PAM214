@@ -7,7 +7,7 @@ import ImageBackgroundScreen from './ImageBackgroundScreen'
 import ActivityIndicatorScreen from './ActivityIndicatorScreen'
 import Scroll from './Scroll' 
 import Ejemp from './Ejemp'
-import Repaso from './Repaso'
+import ListScreen from './ListScreen'
 export default function MenuScreen () {
     const [screen,setScreen]=useState('menu');
     switch (screen){
@@ -15,6 +15,22 @@ export default function MenuScreen () {
             return <ContadorScreen/>
         case 'botones':
             return <BotonesScreen/>
+        case 'Texto':
+            return <TextImput/>
+         case 'Imagen':
+            return <ImageBackgroundScreen/>  
+          case 'Scroll' :
+            return <Scroll/>
+        case 'ActivityIndicatorScreen':
+            return <ActivityIndicatorScreen/>
+        case  'Modal':
+            return <Modal/>
+        case 'Bottom Sheet':
+            return <BottomSheet/>  
+        case 'Ejemp':
+            return <Ejemp/>
+        case 'List':
+            return <ListScreen/>
         case 'menu':
             default: 
                 return (
@@ -38,7 +54,7 @@ export default function MenuScreen () {
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Scroll')} title='Pract:Scroll'/>
                             </View> 
                             <View style={styles.buttonSquare}>
-                                <Button color='#ff0080ff' onPress={()=>setScreen('FlatList')} title='Pract:FlatList'/>
+                                <Button color='#ff0080ff' onPress={()=>setScreen('List')} title='Pract:List'/>
                             </View> 
                             <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Modal')} title='Pract:Modal'/>
@@ -50,31 +66,8 @@ export default function MenuScreen () {
                              <View style={styles.buttonSquare}>
                                 <Button color='#ff0080ff' onPress={()=>setScreen('Ejemp')} title='Pract:Ejemp'/> 
                             </View>
-                            <View style={styles.buttonSquare}>
-                                <Button color='#ff0080ff' onPress={()=>setScreen('Repaso')} title='Pract:Repaso'/> 
-                            </View>
                     </View> 
                 )  
-        case 'Texto':
-            return <TextImput/>
-         case 'Imagen':
-            return <ImageBackgroundScreen/>  
-          case 'Scroll' :
-            return <Scroll/>
-        case 'ActivityIndicatorScreen':
-            return <ActivityIndicatorScreen/>
-        case 'ActivityIndicator':
-            return <ActivityIndicator/>
-        case  'FlatList':
-            return <FlatListySectionList/>
-        case  'Modal':
-            return <Modal/>
-        case 'Bottom Sheet':
-            return <BottomSheet/>  
-        case 'Ejemp':
-            return <Ejemp/>
-        case 'Repaso':
-            return <Repaso/>
     }    
 }
 // 3. Estilos: Zona estetica y posicionamiento 
