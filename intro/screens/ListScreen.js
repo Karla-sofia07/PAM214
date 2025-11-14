@@ -1,6 +1,6 @@
 import { Text, StyleSheet, View, FlatList, SectionList} from 'react-native'
 
-export default function  FlatListySectionList() {
+export default function ListScreen() {
   const estudiantes =[
     {id:"1", nombre: "Sofia"},
     {id:"2", nombre: "Santiago"},
