@@ -16,7 +16,7 @@ function ProfileStackScreen() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="MainTabs"
+        name="MainTabs" 
         component={Profile}
         options={{ headerShown: false }}
       />
