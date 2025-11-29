@@ -59,27 +59,75 @@ export default function InsertUsuarioScreen() {
       setGuardando(false);
     }
   };
+// UPDATE - editar usuario
+const handleEditar = async (usuario) => {
+  Alert.prompt(
+    'Editar Usuario',
+    `Modifica el nombre de ${usuario.nombre}`,
+    async (nuevoNombre) => {
+      if (!nuevoNombre || nuevoNombre.trim() === '') return;
+      try {
+        await controller.actualizarUsuario(usuario.id, nuevoNombre);
+        Alert.alert(' Usuario actualizado', `Nuevo nombre: ${nuevoNombre}`);
+      } catch (error) {
+        Alert.alert('Error', error.message);
+      }
+    },
+    'plain-text',
+    usuario.nombre
+  );
+};
+
+// DELETE - eliminar usuario
+const handleEliminar = async (usuario) => {
+  Alert.alert(
+    '¿Eliminar usuario?',
+    ` Esto eliminará a ${usuario.nombre} permanentemente`,
+    [
+      { text: 'Cancelar', style: 'cancel' },
+      {
+        text: 'Eliminar',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await controller.eliminarUsuario(usuario.id);
+            Alert.alert('Usuario eliminado', `${usuario.nombre} fue borrado`);
+          } catch (error) {
+            Alert.alert('Error', error.message);
+          }
+        },
+      },
+    ]
+  );
+};
 
   // Renderizar cada usuario
-  const renderUsuario = ({ item, index }) => (
-    <View style={styles.userItem}>
-      <View style={styles.userNumber}>
-        <Text style={styles.userNumberText}>{index + 1}</Text>
-      </View>
-      <View style={styles.userInfo}>
-        <Text style={styles.userName}>{item.nombre}</Text>
-        <Text style={styles.userId}>ID: {item.id}</Text>
-        <Text style={styles.userDate}>
-          {new Date(item.fechaCreacion).toLocaleDateString('es-MX', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          })}
-        </Text>
-      </View>
+const renderUsuario = ({ item, index }) => (
+  <View style={styles.userItem}>
+    <View style={styles.userNumber}>
+      <Text style={styles.userNumberText}>{index + 1}</Text>
     </View>
-  );
-
+    <View style={styles.userInfo}>
+      <Text style={styles.userName}>{item.nombre}</Text>
+      <Text style={styles.userId}>ID: {item.id}</Text>
+      <Text style={styles.userDate}>
+        {new Date(item.fechaCreacion).toLocaleDateString('es-MX', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </Text>
+    </View>
+    <View style={{ flexDirection: 'row', gap: 10 }}>
+      <TouchableOpacity onPress={() => handleEditar(item)}>
+        <Text style={{ fontSize: 18, color: '#1976D2' }}>Editar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleEliminar(item)}>
+        <Text style={{ fontSize: 18, color: '#D32F2F' }}>Eliminar</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+);
   return (
     <View style={styles.container}>
 

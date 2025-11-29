@@ -22,14 +22,12 @@ export class UsuarioController {
     }
   }
 
+  // Crear nuevo usuario
   async crearUsuario(nombre) {
     try {
       Usuario.validar(nombre);
-
       const nuevoUsuario = await DatabaseService.add(nombre.trim());
-
       this.notifyListeners();
-
       return new Usuario(
         nuevoUsuario.id,
         nuevoUsuario.nombre,
@@ -37,6 +35,35 @@ export class UsuarioController {
       );
     } catch (error) {
       console.error('Error al crear usuario:', error);
+      throw error;
+    }
+  }
+
+  // ✅ Actualizar usuario
+  async actualizarUsuario(id, nuevoNombre) {
+    try {
+      Usuario.validar(nuevoNombre);
+      const actualizado = await DatabaseService.update(id, nuevoNombre.trim());
+      this.notifyListeners();
+      return new Usuario(
+        actualizado.id,
+        actualizado.nombre,
+        actualizado.fecha_creacion
+      );
+    } catch (error) {
+      console.error('Error al actualizar usuario:', error);
+      throw error;
+    }
+  }
+
+  // ✅ Eliminar usuario
+  async eliminarUsuario(id) {
+    try {
+      await DatabaseService.delete(id);
+      this.notifyListeners();
+      return true;
+    } catch (error) {
+      console.error('Error al eliminar usuario:', error);
       throw error;
     }
   }
@@ -52,5 +79,5 @@ export class UsuarioController {
 
   notifyListeners() {
     this.listeners.forEach(callback => callback());
-  }
+  }
 }

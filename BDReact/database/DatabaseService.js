@@ -28,7 +28,6 @@ class DatabaseService {
       const data = localStorage.getItem(this.storageKey);
       return data ? JSON.parse(data) : [];
     } else {
-      // ✅ Cambiado a ASC para que los IDs estén en orden natural
       return await this.db.getAllAsync('SELECT * FROM usuarios ORDER BY id ASC');
     }
   }
@@ -58,7 +57,43 @@ class DatabaseService {
       };
     }
   }
+
+  // ✅ Actualizar usuario
+  async update(id, nuevoNombre) {
+    if (Platform.OS === 'web') {
+      const usuarios = await this.getAll();
+      const index = usuarios.findIndex(u => u.id === id);
+      if (index !== -1) {
+        usuarios[index].nombre = nuevoNombre;
+        localStorage.setItem(this.storageKey, JSON.stringify(usuarios));
+        return usuarios[index];
+      } else {
+        throw new Error('Usuario no encontrado');
+      }
+    } else {
+      await this.db.runAsync(
+        'UPDATE usuarios SET nombre = ? WHERE id = ?',
+        nuevoNombre,
+        id
+      );
+      const result = await this.db.getFirstAsync(
+        'SELECT * FROM usuarios WHERE id = ?',
+        id
+      );
+      return result;
+    }
+  }
+
+  // ✅ Eliminar usuario
+  async delete(id) {
+    if (Platform.OS === 'web') {
+      const usuarios = await this.getAll();
+      const filtrados = usuarios.filter(u => u.id !== id);
+      localStorage.setItem(this.storageKey, JSON.stringify(filtrados));
+    } else {
+      await this.db.runAsync('DELETE FROM usuarios WHERE id = ?', id);
+    }
+  }
 }
 
-// Exportar instancia de la clase
 export default new DatabaseService();
