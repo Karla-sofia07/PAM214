@@ -10,6 +10,7 @@ import Ejemp from './Ejemp'
 import ListScreen from './ListScreen'
 import ModalScreen from './ModalScreen'
 import BottomSheetScreen from './BottomSheetScreen' 
+import TransaccionesScreen from './TransaccionesScreen'
 export default function MenuScreen () {
     const [screen,setScreen]=useState('menu');
     switch (screen){
@@ -33,6 +34,8 @@ export default function MenuScreen () {
             return <Ejemp/>
         case 'ListScreen':
             return <ListScreen/>
+        case 'TransaccionesScreen':
+            return <TransaccionesScreen/>
         case 'menu':
             default: 
                 return (
@@ -68,6 +71,9 @@ export default function MenuScreen () {
                     </View>
                     <View style={styles.buttonSquare}>
                         <Button color='#ff0080ff' onPress={() => setScreen('Ejemp')} title='Pract:Ejemp' />
+                    </View>
+                    <View style={styles.buttonSquare}>
+                        <Button color='#ff0080ff' onPress={() => setScreen('TransaccionesScreen')} title='Pract:Transc' />
                     </View>
                     </View>
                 )  
